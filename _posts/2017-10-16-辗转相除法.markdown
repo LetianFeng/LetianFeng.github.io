@@ -21,14 +21,21 @@ Java的代码实现：
 public class Main {
     public static void main(String[] args) {
         int a = 76;
-        int b = 95;
+        int b = 68;
         System.out.println(greatestCommonDivisor(a, b)); // 19
     }
 
-    public static int  greatestCommonDivisor(int a, int b) {
-        int r = Math.min(a, b);
+    private static int  greatestCommonDivisor(int a, int b) {
+        // swap a & b if a < b
+        if (a < b) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+        // logic part
+        int r = a % b;
         while (r != 0) {
-            a = Math.max(a, b);
+            a = b;
             b = r;
             r = a % b;
         }
