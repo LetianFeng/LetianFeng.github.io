@@ -122,7 +122,7 @@ public class Main {
 ```
 public class Main {
     public static void main(String[] args) {
-        int[] unsorted = new int[]{3,27,1,2,55,8,66,10};
+        int[] unsorted = new int[]{3, 27, 1, 2, 55, 8, 66, 10};
         mergeSort(unsorted);
         // 1 2 3 8 10 27 55 66
         for (int num : unsorted) {
@@ -137,7 +137,7 @@ public class Main {
     private static void mergeSort(int[] unsorted, int start, int end) {
         if (start >= end)
             return;
-        
+
         int mid = start + (end - start) / 2;
         mergeSort(unsorted, start, mid);
         mergeSort(unsorted, mid + 1, end);
@@ -171,7 +171,6 @@ public class Main {
         }
     }
 }
-
 ```
 
 ***快速排序***
