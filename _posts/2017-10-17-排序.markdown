@@ -1,0 +1,243 @@
+---
+layout: post
+title:  "辗转相除法"
+date:   2017-10-16 21:25:00 +0200
+categories: Algorithms
+---
+
+数组有n位，要求排序后，数组呈现从小到大的顺序。常见的排序有：冒泡，选择，插入，归并，快速，以及堆排序，下面逐一解释，并po上我自己的实现，如有疏漏，还望指正！
+
+***冒泡排序***
+时间复杂度O(n^2)
+1. i = 0， m = n - 1；
+2. 比较第i位和第i+1位的大小，将大的放在右边，i++；
+3. 当i + 1 == m时，在完成本次比较（和可能的交换）后，m--,i = 0，再次进行2.。
+
+```
+public class Main {
+    public static void main(String[] args) {
+        int[] unsorted = new int[]{3,27,1,2,55,8,66,10};
+        bubbleSort(unsorted);
+        // 1 2 3 8 10 27 55 66
+        for (int num : unsorted) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void bubbleSort(int[] unsorted) {
+        for (int i = 0; i < unsorted.length; i++) {
+            for (int j = 0; j < unsorted.length - i - 1; j++) {
+                if (unsorted[j] > unsorted[j + 1]) {
+                    swap(unsorted, j, j + 1);
+                }
+            }
+        }
+    }
+
+    private static void swap(int[] unsorted, int i, int j) {
+        int tmp = unsorted[i];
+        unsorted[i] = unsorted[j];
+        unsorted[j] = tmp;
+    }
+}
+```
+
+***选择排序***
+时间复杂度O(n^2)
+1. m = n - 1；
+2. 比较从0到m的所有数,将最大的与第m位交换，m--，再次执行2.，直到m == 0。
+
+```
+public class Main {
+    public static void main(String[] args) {
+        int[] unsorted = new int[]{3,27,1,2,55,8,66,10};
+        selectSort(unsorted);
+        // 1 2 3 8 10 27 55 66
+        for (int num : unsorted) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void selectSort(int[] unsorted) {
+        for (int i = unsorted.length; i > 0; i--) {
+            int max = unsorted[0];
+            int pos = 0;
+            for (int j = 0; j < i; j++) {
+                if (unsorted[j] > max) {
+                    max = unsorted[j];
+                    pos = j;
+                }
+            }
+            swap(unsorted, pos, i - 1);
+        }
+    }
+
+    private static void swap(int[] unsorted, int i, int j) {
+        int tmp = unsorted[i];
+        unsorted[i] = unsorted[j];
+        unsorted[j] = tmp;
+    }
+}
+```
+
+***插入排序***
+时间复杂度O(n^2)
+1. i = 0, m = i + 1；
+2. 将第m位数与之前1位的数进行比较，若小于前一位，交换，m--，直到前1位比第m位小；
+3. i++，m = i + 1，再次执行2.，直到i == n。
+
+```
+public class Main {
+    public static void main(String[] args) {
+        int[] unsorted = new int[]{3,27,1,2,55,8,66,10};
+        insertSort(unsorted);
+        // 1 2 3 8 10 27 55 66
+        for (int num : unsorted) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void insertSort(int[] unsorted) {
+        for (int i = 0; i < unsorted.length - 1; i++) {
+            for (int j = i + 1; j > 0; j--) {
+                if (unsorted[j] < unsorted[j - 1]) {
+                    swap(unsorted, j - 1, j);
+                }
+            }
+        }
+    }
+
+    private static void swap(int[] unsorted, int i, int j) {
+        int tmp = unsorted[i];
+        unsorted[i] = unsorted[j];
+        unsorted[j] = tmp;
+    }
+}
+```
+
+***归并排序***
+时间复杂度O(n\*log(n))
+1. 首先将数组不断2分，直至子数组只有1位；
+2. 将子数组两两合并成更大的子数组，直至还原成原数组大小。
+```
+public class Main {
+    public static void main(String[] args) {
+        int[] unsorted = new int[]{3,27,1,2,55,8,66,10};
+        mergeSort(unsorted);
+        // 1 2 3 8 10 27 55 66
+        for (int num : unsorted) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void mergeSort(int[] unsorted) {
+        mergeSort(unsorted, 0, unsorted.length - 1);
+    }
+
+    private static void mergeSort(int[] unsorted, int start, int end) {
+        if (start >= end)
+            return;
+        
+        int mid = start + (end - start) / 2;
+        mergeSort(unsorted, start, mid);
+        mergeSort(unsorted, mid + 1, end);
+        merge(unsorted, start, mid, end);
+    }
+
+    private static void merge(int[] unsorted, int start, int mid, int end) {
+        int[] sorted = new int[end - start + 1];
+        int left = start;
+        int right = mid + 1;
+        for (int i = 0; i < sorted.length; i++) {
+            if (left <= mid && right <= end) {
+                if (unsorted[left] < unsorted[right]) {
+                    sorted[i] = unsorted[left];
+                    left++;
+                } else {
+                    sorted[i] = unsorted[right];
+                    right++;
+                }
+            } else if (left <= mid) {
+                sorted[i] = unsorted[left];
+                left++;
+            } else {
+                sorted[i] = unsorted[right];
+                right++;
+            }
+        }
+        for (int i = 0; i < sorted.length; i++) {
+            unsorted[start] = sorted[i];
+            start++;
+        }
+    }
+}
+
+```
+
+***快速排序***
+时间复杂度O(n\*log(n))
+1. 选取1个pivot值，将比pivot值小的数移到pivot左边，大的移到右边；
+2. 针对左边和右边的子数组递归调用快速排序，即执行1.，直到子数组的开始位大于或等于结束位；
+```
+public class Main {
+    public static void main(String[] args) {
+        int[] unsorted = new int[]{3,27,1,2,55,8,66,10};
+        quickSort(unsorted);
+        // 1 2 3 8 10 27 55 66
+        for (int num : unsorted) {
+            System.out.print(num + " ");
+        }
+    }
+
+    private static void quickSort(int[] unsorted) {
+        quickSort(unsorted, 0, unsorted.length - 1);
+    }
+
+    private static void quickSort(int[] unsorted, int start, int end) {
+        if (start >= end) {
+            return;
+        }
+        
+        int pivot = partition(unsorted, start, end);
+        quickSort(unsorted, start, pivot - 1);
+        quickSort(unsorted, pivot + 1, end);
+    }
+
+    private static int partition(int[] unsorted, int start, int end) {
+        int pivot = start;
+        int left = start + 1;
+        int right = end;
+        while (true) {
+            while (left <= right && unsorted[left] < unsorted[pivot]) {
+                left++;
+            }
+            while (left <= right && unsorted[right] > unsorted[pivot]) {
+                right--;
+            }
+            if (left < right) {
+                swap(unsorted, left, right);
+            } else {
+                break;
+            }
+        }
+        swap(unsorted, pivot, right);
+        return pivot;
+    }
+
+    private static void swap(int[] unsorted, int i, int j) {
+        int tmp = unsorted[i];
+        unsorted[i] = unsorted[j];
+        unsorted[j] = tmp;
+    }
+}
+```
+
+***堆排序***
+时间复杂度O(n\*log(n))
+1. m = n - 1；
+2. 将数组大根堆化，将堆顶与m位swap，m--；
+3. 再次执行2.，直到m == 0；
+```
+
+```
+
