@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "辗转相除法"
-date:   2017-10-16 21:25:00 +0200
+title:  "排序"
+date:   2017-10-17 21:25:00 +0200
 categories: Algorithms
 ---
 
