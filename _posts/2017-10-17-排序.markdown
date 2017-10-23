@@ -269,6 +269,7 @@ public class Main {
             maxPos = rPos;
         if (unsorted[maxPos] > unsorted[index]) {
             swap(unsorted, index, maxPos);
+            maxHeapify(unsorted, maxPos, end);
         }
     }
 
