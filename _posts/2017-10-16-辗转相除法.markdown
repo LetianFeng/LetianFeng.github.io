@@ -2,7 +2,7 @@
 layout: post
 title:  "辗转相除法"
 date:   2017-10-16 21:25:00 +0200
-categories: Algorithms
+categories: algorithm
 ---
 
 在求取最大公约数时，遍历是很耗资源的，因此，可以选择辗转相除法。

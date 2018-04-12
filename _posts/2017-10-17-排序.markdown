@@ -2,7 +2,7 @@
 layout: post
 title:  "排序"
 date:   2017-10-17 21:25:00 +0200
-categories: Algorithms
+categories: algorithm
 ---
 
 数组有n位，要求排序后，数组呈现从小到大的顺序。常见的排序有：冒泡，选择，插入，归并，快速，以及堆排序，下面逐一解释，并po上我自己的实现，如有疏漏，还望指正！
