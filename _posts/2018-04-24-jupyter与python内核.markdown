@@ -2,7 +2,8 @@
 layout: post
 title: "jupyter与python的内核"
 date: 2018-04-24 17:59:30 +0200
-categories: python, jupyter, ipython
+categories: python
+tags: python jupyter ipython
 ---
 
 开始学TensorFlow了，开始在terminal里面搞，一出语法错误就要从头输实在心烦，于是打算开始用jupyter，然后
