@@ -10,7 +10,7 @@ tags: linux
 
 我们的任务是将若干个文本文件中的句子转换为vector，再存为另一个文件，其中输入文件的每一行都是一个句子，输出文件的每一行应句子对应的vector，我语言描述的不太清楚，画了个草图，大家一看应该就明白了:
 
-![sent2vec](https://raw.githubusercontent.com/LetianFeng/letianfeng.github.io/master/images/linux_redirection_1.svg)
+![sent2vec](https://raw.githubusercontent.com/LetianFeng/letianfeng.github.io/master/images/linux_redirection_1.png)
 
 显然，我们不可能手动一行一行地复制粘贴，而是使用工具来提升效率，并避免人工错误。这个工具就是linux自带的redirection功能，它分为3部分<sup>[1]</sup>:
 
