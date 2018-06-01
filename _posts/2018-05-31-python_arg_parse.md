@@ -194,4 +194,4 @@ parser2.py: error: argument -q/--quiet: not allowed with argument -v/--verbose
 
 从这次开始，我会把文章中代码传到[examples文件夹](https://github.com/LetianFeng/letianfeng.github.io/tree/master/examples)下，大家直接clone或者pull就可以执行了，免得还要复制粘贴，嘿嘿。
 
-如果有发现我写错的地方，欢迎邮件联系我<letian.feng@hotmail.com>，或者直接在这个博客的[repo](https://github.com/LetianFeng/letianfeng.github.io)里提pull request或issue也可以。
+如果有发现我写错的地方，欢迎邮件联系我<letian.feng@hotmail.com>，或者直接在这个博客的[repo](https://github.com/LetianFeng/letianfeng.github.io)里提pull request或issue也可以，谢谢！
