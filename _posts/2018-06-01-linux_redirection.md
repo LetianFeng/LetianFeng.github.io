@@ -12,13 +12,13 @@ tags: linux
 
 ![sent2vec](https://raw.githubusercontent.com/LetianFeng/letianfeng.github.io/master/images/linux_redirection_1.png)
 
-显然，我们不可能手动一行一行地复制粘贴，而是使用工具来提升效率，并避免人工错误。这个工具就是linux自带的redirection功能，它分为3部分<sup>[1]</sup>:
+显然，我们不可能手动一行一行地复制粘贴，而是使用工具来提升效率，并避免人工错误。这个工具就是linux自带的redirection功能，它分为3部分<sup>[[1]](http://cn.linux.vbird.org/linux_basic/0320bash_5.php)</sup>:
 
 1. stdin，标准输入，代码为0，使用`<`或`<<`；
 2. stdout，标准输出，代码为1,使用`>`或`>>`；
 3. stderr，标准错误输出，代码为2,使用`2<`或`2>>`；
 
-![linux redirection](https://raw.githubusercontent.com/LetianFeng/letianfeng.github.io/master/images/linux_redirection_2.png)
+![linux redirection](https://raw.githubusercontent.com/LetianFeng/letianfeng.github.io/master/images/linux_redirection_2.png)<sup>[[2]](https://ryanstutorials.net/linuxtutorial/piping.php)</sup>
 
 对于stdout和stderr，`>`代表覆盖写，`>>`则代表在文件末尾追加；对于stdin来说，`<`右边的文件取代键盘作为新的输入方式，`<<`右边的字符串代表结束输入的关键字，比如EOF，注意必须是完全匹配才能结束输入:
 
@@ -49,6 +49,7 @@ letian@fengPC:~/Desktop/nlp/src/sent2vec$ ./fasttext print-sentence-vectors mode
 
 #### **来源:**
 
-[1] [鸟哥的Linux私房菜 -- 学习 bash shell](http://cn.linux.vbird.org/linux_basic/0320bash_5.php)
+1. [鸟哥的Linux私房菜 -- 学习 bash shell](http://cn.linux.vbird.org/linux_basic/0320bash_5.php)
+2. [Linux Tutorial - 11. Piping and Redirection](https://ryanstutorials.net/linuxtutorial/piping.php)
 
 如果有发现我写错的地方，欢迎邮件联系我<letian.feng@hotmail.com>，或者直接在这个博客的[repo](https://github.com/LetianFeng/letianfeng.github.io)里提pull request或issue也可以，谢谢！
