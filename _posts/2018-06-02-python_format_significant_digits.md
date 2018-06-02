@@ -32,6 +32,21 @@ python的Formatter可以很好地帮我们解决这个问题。Formatter原本�
 '1245.679%'
 ```
 
+如果需要的是浮点数而不是字符串的话，再加一层强制转换，注意百分数不可以强制转换:
+
+```python
+>>> float(format(12.456789, '.3g'))
+12.5
+>>> float(format(12.456789, '.3f'))
+12.457
+>>> float(format(12.456789, '.3e'))
+12.46
+>>> float(format(12.456789, '.3%'))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: could not convert string to float: '1245.679%'
+```
+
 #### **来源:**
 
 1. [15. Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)
